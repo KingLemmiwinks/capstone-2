@@ -17,7 +17,7 @@ class User(db.Model):
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
     name = db.Column(db.String, nullable=False)
-    phoneNumber = db.Column(db.Integer(10), nullable=False)
+    phoneNumber = db.Column(db.Integer, nullable=False)
     userHousehold = db.relationship('userHouseholds')
 
     # start_register
@@ -59,7 +59,7 @@ class Household(db.Model):
     streetAddress = db.Column(db.String)
     city = db.Column(db.String)
     State = db.Column(db.String)
-    zip = db.Column(db.Integer(5))
+    zip = db.Column(db.Integer)
     picture = db.Column(db.String, nullable=True)
     notes = db.Column(db.Text, nullable=True)
 
