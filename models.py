@@ -16,11 +16,10 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
-    first_name = db.Column(db.String, nullable=False)
-    last_name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    phone_number = db.Column(db.String, nullable=False)
-    userHousehold = db.relationship('userHouseholds')
+    first_name = db.Column(db.String)
+    last_name = db.Column(db.String)
+    email = db.Column(db.String)
+    phone_number = db.Column(db.String)
 
     # start_register
     @classmethod
@@ -73,7 +72,8 @@ class UserHousehold(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     userID = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
     householdID = db.Column(db.Integer, db.ForeignKey('households.id', ondelete='cascade'))
-    household = db.relationship('households')
+    users = db.relationship('User')
+    households = db.relationship('Household')
 
 class SellerExpertise(db.Model):
     """Seller's Expertise"""
